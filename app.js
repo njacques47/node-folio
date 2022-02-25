@@ -1,3 +1,4 @@
+const fs = require('fs');
 const profileDataArgs = process.argv.slice(2, process.argv.length);
 
 const [name, github] = profileDataArgs;
@@ -22,5 +23,9 @@ const generatePage = (name, github) => {
   `;
 };
 
-console.log(name, github);
-console.log(generatePage(name, github));
+// the fs.writeFile creates the html using the generatePage template literal, and has a callback function for errors & the success message. This is done by passing 3 arguments --> fs.writeFile(fileName.whatever, fileData, callbackErrorHandle)
+fs.writeFile('index.html', generatePage(name, github), err => {
+  if (err) throw err;
+
+  console.log('Portfolio complete! Check out the newly generated index.html to see the output!')
+});
