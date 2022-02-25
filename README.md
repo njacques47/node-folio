@@ -5,6 +5,7 @@
 - what problem does it solve
 - what was learned?
 
-## Installation Guide
+## Installation/Dependancies
+- npm install inquirer
 
 ## Usage/Demo
