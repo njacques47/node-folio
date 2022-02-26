@@ -1,0 +1,22 @@
+{
+  "name": "folio",
+  "version": "1.0.0",
+  "description": "## Description - motivation for project: - what problem does it solve - what was learned?",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njacques47/node-folio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njacques47/node-folio/issues"
+  },
+  "homepage": "https://github.com/njacques47/node-folio#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
