@@ -180,8 +180,19 @@ const pageHTML = generatePage(mockData);
 //   .then(promptProject)
 //   .then(portfolioData => {
 //      const pageHTML = generatePage(portfolioData);
-    fs.writeFile('./index.html', pageHTML, err => {
-      if (err) throw new Error(err);
-      console.log('Page created! Check out the newly generated index.html to see the output!')
+    fs.writeFile('./dist/index.html', pageHTML, err => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('index.html created! Check out the dist folder to see the output!');
+
+      fs.copyFile('./src/style.css', './dist/style.css', err => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log('style.css copied to dist folder successfully.');
+      });
     });
 //   });
