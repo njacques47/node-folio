@@ -14,7 +14,7 @@ const generateAbout = aboutText => {
 
 // attempting to use the GitHub username/projectName as a generated url path for less keystrokes
 const generateProjects = projectsArr => {
-    return `
+  return `
     <section class="my-3" id="portfolio">
       <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
       <div class="flex-row justify-space-between">

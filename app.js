@@ -23,8 +23,8 @@ const promptUser = () => {
         type: 'input',
         name: 'github',
         message: 'What is your Github username? (required)',
-        validate: nameInput => {
-          if (nameInput) {
+        validate: githubInput => {
+          if (githubInput) {
             return true;
           } else {
             console.log('Please enter your Github username!');
@@ -83,8 +83,8 @@ const promptProject = portfolioData => {
         type: 'input',
         name: 'description',
         message: 'Provide a description of your project (required)',
-        validate: nameInput => {
-          if (nameInput) {
+        validate: descriptionInput => {
+          if (descriptionInput) {
             return true;
           } else {
             console.log('Please enter your project description!');
@@ -102,8 +102,8 @@ const promptProject = portfolioData => {
         type: 'input',
         name: 'link',
         message: 'Enter the path name to your Github project (required)',
-        validate: nameInput => {
-          if (nameInput) {
+        validate: linkInput => {
+          if (linkInput) {
             return true;
           } else {
             console.log('Please enter your project link!');
@@ -131,7 +131,7 @@ const promptProject = portfolioData => {
       } else {
         return portfolioData; // if the user doesn't want to add more projects, only the recorded responses are returned
       }
-    })
+    });
 };
 
 // placeholder for demos
@@ -187,7 +187,7 @@ const pageHTML = generatePage(mockData);
 //   .then(portfolioData => {
 //      const pageHTML = generatePage(portfolioData);
     fs.writeFile('./index.html', pageHTML, err => {
-      if (err) throw err;
+      if (err) throw new Error(err);
       console.log('Page created! Check out the newly generated index.html to see the output!')
     });
 //   });
