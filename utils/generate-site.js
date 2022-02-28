@@ -18,3 +18,22 @@ const writeFile = fileContent => {
     });
   });
 };
+
+const copyFile = () => {
+  return new Promise ((resolve, reject) => {
+    // copy file from location1 to location2 & if error, throw err
+    fs.copyFile('./src/style.css', './dist/style.css', err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      resolve({
+        ok: true,
+        message: 'stylesheet copied!'
+      });
+    });
+  });
+};
+
+module.exports = { writeFile, copyFile };

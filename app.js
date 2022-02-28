@@ -1,4 +1,4 @@
-const fs = require('fs');
+const generateSite = require('./utils/generate-site');
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template.js'); // receives exported function from the relative path string written in require()
 
