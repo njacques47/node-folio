@@ -147,7 +147,7 @@ const mockData = {
       description:
         'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et. Nam fringilla elit dapibus pellentesque cursus.',
       languages: ['HTML', 'CSS'],
-      link: 'https://github.com/lernantino/run-buddy',
+      link: 'run-buddy',
       feature: true,
       confirmAddProject: true
     },
@@ -156,7 +156,7 @@ const mockData = {
       description:
         'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et. Nam fringilla elit dapibus pellentesque cursus.',
       languages: ['JavaScript', 'HTML', 'CSS'],
-      link: 'https://github.com/lernantino/taskinator',
+      link: 'taskinator',
       feature: true,
       confirmAddProject: true
     },
@@ -165,7 +165,7 @@ const mockData = {
       description:
         'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et. Nam fringilla elit dapibus pellentesque cursus.',
       languages: ['JavaScript', 'jQuery', 'CSS', 'HTML', 'Bootstrap'],
-      link: 'https://github.com/lernantino/taskmaster-pro',
+      link: 'taskmaster-pro',
       feature: false,
       confirmAddProject: true
     },
@@ -174,7 +174,7 @@ const mockData = {
       description:
         'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque.',
       languages: ['JavaScript'],
-      link: 'https://github.com/lernantino/robot-gladiators',
+      link: 'robot-gladiators',
       feature: false,
       confirmAddProject: false
     }
@@ -186,8 +186,8 @@ const pageHTML = generatePage(mockData);
 //   .then(promptProject)
 //   .then(portfolioData => {
 //      const pageHTML = generatePage(portfolioData);
-//     // fs.writeFile('./index.html', pageHTML, err => {
-//     //   if (err) throw err;
-//     //   console.log('Page created! Check out the newly generated index.html to see the output!')
-//     // });
+    fs.writeFile('./index.html', pageHTML, err => {
+      if (err) throw err;
+      console.log('Page created! Check out the newly generated index.html to see the output!')
+    });
 //   });
