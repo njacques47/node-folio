@@ -1,4 +1,4 @@
-const generateSite = require('./utils/generate-site');
+const { writeFile, copyFile } = require('./utils/generate-site');
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template.js'); // receives exported function from the relative path string written in require()
 
@@ -128,56 +128,23 @@ const promptProject = portfolioData => {
     });
 };
 
-// placeholder for demos
-const mockData = {
-  name: 'Lernantino',
-  github: 'lernantino',
-  confirmAbout: true,
-  about:
-    'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
-  projects: [
-    {
-      name: 'Run Buddy',
-      description:
-        'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et. Nam fringilla elit dapibus pellentesque cursus.',
-      languages: ['HTML', 'CSS'],
-      link: 'run-buddy',
-      feature: true,
-      confirmAddProject: true
-    },
-    {
-      name: 'Taskinator',
-      description:
-        'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et. Nam fringilla elit dapibus pellentesque cursus.',
-      languages: ['JavaScript', 'HTML', 'CSS'],
-      link: 'taskinator',
-      feature: true,
-      confirmAddProject: true
-    },
-    {
-      name: 'Taskmaster Pro',
-      description:
-        'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et. Nam fringilla elit dapibus pellentesque cursus.',
-      languages: ['JavaScript', 'jQuery', 'CSS', 'HTML', 'Bootstrap'],
-      link: 'taskmaster-pro',
-      feature: false,
-      confirmAddProject: true
-    },
-    {
-      name: 'Robot Gladiators',
-      description:
-        'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque.',
-      languages: ['JavaScript'],
-      link: 'robot-gladiators',
-      feature: false,
-      confirmAddProject: false
-    }
-  ]
-};
-const pageHTML = generatePage(mockData);
+//const pageHTML = generatePage(mockData);
 
 promptUser()
-  .then(promptProject)
-  .then(portfolioData => {
-     const pageHTML = generatePage(portfolioData);
+  .then(promptProject) // captures the data from promptUser and combines it with project data. project data then gets pushed into an array
+  .then(portfolioData => { // bundles all the previously collected data to pass to the next .then()
+     return generatePage(portfolioData);
+  })
+  .then(pageHTML => { // pageHTML accepts the newly created template of data and writes that to a new file in dist/. the return passes the promise to the next .then()
+    return writeFile(pageHTML);
+  })
+  .then(writeFileResponse => { //
+    console.log(writeFileResponse);
+    return copyFile();
+  })
+  .then(copyFileResponse => { //
+    console.log(copyFileResponse);
+  })
+  .catch(err => {
+    console.log(err);
   });

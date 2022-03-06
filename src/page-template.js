@@ -18,7 +18,7 @@ const generateProjects = projectsArr => {
     <section class="my-3" id="portfolio">
       <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
       <div class="flex-row justify-space-between">
-      ${projectsArr
+      ${projectsArr // all featured projects
         .filter(({ feature }) => feature)
         .map(({ name, description, languages, link }) => {
           return `
@@ -29,13 +29,13 @@ const generateProjects = projectsArr => {
               ${languages.join(', ')}
             </h5>
             <p>${description}</p>
-            <a href=https://github.com/njacques47/"${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+            <a href="https://github.com/njacques47/${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
           </div>
         `;
         })
         .join('')}
 
-      ${projectsArr
+      ${projectsArr // all non-featured projects
         .filter(({ feature }) => !feature)
         .map(({ name, description, languages, link }) => {
           return `
